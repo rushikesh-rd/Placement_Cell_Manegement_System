@@ -66,25 +66,26 @@ if(message==null)
  					<%=message %>
 				</div>
 	
-	<!-- Add job -->
-	<section>
-		<div class="container">
-			<div class="text-center">
-				<h1>Add Jobs</h1>
-				<br>
-				
-			</div>
-		</div>
-	</section>
+	
+
 	<!-- Job Post -->
 	<section id="contact">
 		<div class="container">
 			<div class="row">
+				
+				<!-- Add job -->
 
-				<div class="col-md-6 col-sm-12" >
+				<div class="container">
+					<div class="text-center">
+						<h1>Add Jobs</h1>
+						<br>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-sm-12" align="center">
 					<form id="contact-form" role="form" action="../ServletControler" method="post">
-						<div class="col-md-12 col-sm-12">
-							<input type="text" class="form-control" placeholder="Company Name" name="companyname" required>
+						<div class="col-md-12 col-sm-12" align="center">
+							<input type="text" align="center" class="form-control" placeholder="Company Name" name="companyname" required>
 							<input type="text" class="form-control"  placeholder="Job Profile" name="jobprofile" required> 
 							<input type="text" class="form-control" placeholder="Job Skils" name="jobskils" required>
 							<input type="text" class="form-control" placeholder="Job Location" name="joblocation" required>

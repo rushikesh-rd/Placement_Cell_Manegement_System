@@ -40,9 +40,6 @@
 		<section>
 			
 		</section>
-
-
-
 	</main>
 
 

@@ -67,7 +67,7 @@ public class ServletControler extends HttpServlet {
 				try {
 					statusBean = commonHelper.userRegistration(registraionBean);
 					if (statusBean.isStatus()) {
-						response.sendRedirect("jsp/login.jsp?message=Registrtion Sucessfull You have to login now");
+						response.sendRedirect("jsp/login.jsp?message=Registrtion Sucessfull wait for admin approval");
 					} else {
 						response.sendRedirect("jsp/registration.jsp?message=Registrtion Failed plz try again");
 					}

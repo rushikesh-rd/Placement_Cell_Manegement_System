@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@page import="java.sql.ResultSet" %>
-  <%@page import="java.sql.PreparedStatement" %>
-    <%@page import="java.sql.DriverManager" %>
-      <%@page import="java.sql.Connection" %>
+	pageEncoding="UTF-8"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,35 +25,33 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="../tcss/style.css">
 <style>
-              #customers {
-                font-family: Arial, Helvetica, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-              }
+#customers {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
 
-              #customers td,
-              #customers th {
-                border: 1px solid #ddd;
-                padding: 8px;
-              }
+#customers td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
 
-              #customers tr:nth-child(even) {
-              
-                background-color: #f2f2f2;
-              }
+#customers tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
 
-              #customers tr:hover {
-                background-color: #ddd;
-              }
+#customers tr:hover {
+	background-color: #ddd;
+}
 
-              #customers th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: left;
-                background-color: #04AA6D;
-                color: white;
-              }
-  </style>
+#customers th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
+}
+</style>
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
@@ -65,13 +63,13 @@
 			<span class="spinner-rotate"></span>
 		</div>
 	</section>
-	
 
-	<%@ include file="header.jsp" %>
+
+	<%@ include file="header.jsp"%>
 
 	<% %>
 
-		   <% Connection con=null; 
+	<% Connection con=null; 
               PreparedStatement stmtt=null;
               try 
               {
@@ -80,34 +78,31 @@
                 stmtt=con.prepareStatement( "select stinfo.pk_roll_no,stinfo.name,stinfo.email,stinfo.is_approved from student_info stinfo where stinfo.is_active='Y' and stinfo.is_approved='N'"
                 ); 
                 ResultSet rs=stmtt.executeQuery(); 
+               %> <table id="customers">
+				 
+				<tr>
+					<th>Roll No</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Student Approved</th>
+					<th>Approve Student</th>
+				</tr> 
+				
+				<%
                 while(rs.next()) 
                 { %>
-             <section>
-              <table id="customers">
-              <tr>
-                <th>Roll No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Student Approved</th>
-              </tr>
-                <tr>
-                  <td>
-                  <%int rollNo=rs.getInt(1); %>
-                    <%= rollNo%>
-                  </td>
-                  <td>
-                    <%=rs.getString(2) %>
-                  </td>
-                  <td>
-                    <%=rs.getString(3) %>
-                  </td>
-                  <td>
-                    <%=rs.getString(4) %>
-                  </td>
-                  <td><a href="../tjsp/approveStudent.jsp?rollno=<%=rollNo%>">Approve</a>
-                  </td>
-                </tr>
-                <%
+	
+					<tr>
+						<td>
+							<%int rollNo=rs.getInt(1); %> <%= rollNo%>
+						</td>
+						<td><%=rs.getString(2) %></td>
+						<td><%=rs.getString(3) %></td>
+						<td><%=rs.getString(4) %></td>
+						<td><a href="../tjsp/approveStudent.jsp?rollno=<%=rollNo%>">Approve</a>
+						</td>
+					</tr>
+				<%
                 }
                 } 
               catch (Exception e) 
@@ -119,8 +114,8 @@
             	  con.close(); stmtt.close(); 
               }%>
 
-            </table>
-            </section>
+		</table>
+	
 	<main>
 		<section>
 			<div class="container">
@@ -204,7 +199,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-md-4 col-sm-12">
 					<div class="footer-info newsletter-form">
 						<div class="section-title">
