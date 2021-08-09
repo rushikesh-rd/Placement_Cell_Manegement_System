@@ -21,7 +21,32 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="../tcss/style.css">
 
+<script>
+	var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+	var alertTrigger = document.getElementById('liveAlertBtn')
+
+	function alert(message, type) {
+		var wrapper = document.createElement('div')
+		wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">'
+				+ message
+				+ '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+		alertPlaceholder.append(wrapper)
+	}
+
+	if (alertTrigger) {
+		alertTrigger.addEventListener('click', function() {
+			alert('Nice, you triggered this alert message!', 'success')
+		})
+	}
+</script>
+
 </head>
+<%String message = request.getParameter("message"); 
+if(message==null)
+{
+	message = "";
+}%>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
 
@@ -36,7 +61,11 @@
 
 
 	<%@ include file="header.jsp" %>
-
+	
+				<div class="alert alert-light" role="alert" align="center">
+ 					<%=message %>
+				</div>
+	
 	<!-- Add job -->
 	<section>
 		<div class="container">
@@ -67,7 +96,8 @@
 							<input type="submit" class="form-control" name="Submit"
 								value="Submit">
 							<input type="hidden" name="action" value="jobpost">
-						</div>
+						</div> 
+						
 
 					</form>
 				</div>
@@ -162,6 +192,7 @@
 
 
 	<!-- SCRIPTS -->
+	
 	<script src="../tjs/jquery.js"></script>
 	<script src="../tjs/bootstrap.min.js"></script>
 	<script src="../tjs/owl.carousel.min.js"></script>

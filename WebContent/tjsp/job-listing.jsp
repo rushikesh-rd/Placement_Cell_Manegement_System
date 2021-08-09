@@ -107,7 +107,7 @@
 		<% 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "#rushikesh11");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
 			PreparedStatement stmtt = con.prepareStatement(
 					"select company_name,job_profile,job_skil,job_description,job_location,job_package,pk_job_id from job_info where is_active='Y'");
 

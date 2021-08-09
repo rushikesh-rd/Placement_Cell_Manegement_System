@@ -230,4 +230,34 @@ public class CommonDao {
 		return status;
 	}
 
+	public Boolean sendNotification(String rollno,String jobid,String msg) throws SQLException {
+		//S TODO Auto-generated method stub
+		
+		Connection con = jdbcObj.getConnection();
+		StatusBean bean=new StatusBean();
+		Boolean status=false;
+		PreparedStatement stmtt = null;
+		try {
+			stmtt = con.prepareStatement("insert into notification(notification,roll_no,job_id,is_active) values(?,?,?,'Y')");
+			stmtt.setString(1, msg);
+			stmtt.setLong(2, Long.valueOf(rollno));
+			stmtt.setLong(3, Long.valueOf(jobid));
+			int rs =stmtt.executeUpdate();
+			if(rs>0)
+			{
+				status=true;
+			}
+		
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			con.close();
+			stmtt.close();
+		}
+		return status;
+
+	}
+
 }

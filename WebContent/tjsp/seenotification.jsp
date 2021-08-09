@@ -38,26 +38,7 @@
 
 	<main>
 		<section>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="text-center">
-							<h2>About us</h2>
-
-							<br>
-
-							<p class="lead">Campus recruitment is a process through which
-								the corporate (employer) organization recruits the required
-								talent pool from the academic campuses. The selection process
-								takes place in the final year of a programme for students of
-								both undergraduate and post graduate courses. Over the years,
-								campus recruitment has assumed greater significance in the minds
-								of several stakeholders. The major stake hoIder”s recruitment
-								process is Institution, Companies, Students and Parents.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 		</section>
 
 

@@ -23,7 +23,7 @@ PreparedStatement stmtt=null;
 boolean data=false;
 try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
-	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "#rushikesh11");
+	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
 	stmtt = con.prepareStatement("select pk_roll_no from student_info where name=?");
 	stmtt.setString(1, name);			
 	ResultSet rs =stmtt.executeQuery();

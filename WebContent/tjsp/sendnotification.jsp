@@ -34,31 +34,20 @@
 
 
 	<%@ include file="header.jsp" %>
-
+<%String rollNo=request.getParameter("rollno");
+String jobid=request.getParameter("apjobid");%>
 	
 
 	<main>
 		<section>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="text-center">
-							<h2>About us</h2>
-
-							<br>
-
-							<p class="lead">Campus recruitment is a process through which
-								the corporate (employer) organization recruits the required
-								talent pool from the academic campuses. The selection process
-								takes place in the final year of a programme for students of
-								both undergraduate and post graduate courses. Over the years,
-								campus recruitment has assumed greater significance in the minds
-								of several stakeholders. The major stake hoIder”s recruitment
-								process is Institution, Companies, Students and Parents.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<form action="../ServletControler" method="post">
+		Roll No. <input type="text" id="rollno" name="rollno" value="<%=rollNo %>" readonly><br><br>
+		Job Id <input type="text" id="jobid" name="jobid" value="<%=jobid %>" readonly><br><br>
+				<textarea cols="50" rows="10" id="message" name="message"></textarea><br><br>
+				<input type="submit" name="submit">
+				<input type="reset" name="reset">
+				<input type="hidden" name="action" value="notification">
+			</form> 
 		</section>
 
 

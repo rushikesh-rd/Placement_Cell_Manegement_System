@@ -138,14 +138,38 @@ public class ServletControler extends HttpServlet {
 				try {
 					statusBean = commonHelper.jobPost(list);
 					if (statusBean.isStatus()) {
-						response.sendRedirect("jsp/succes.jsp");
+						response.sendRedirect("tjsp/addjobs.jsp?message=Job Added to the portal");
 					} else {
-						response.sendRedirect("jsp/fail.jsp");
+						response.sendRedirect("tjsp/addjobs.jsp?message=Job Adding faild ");
 					}	
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+			}
+			
+			else if(action.equals("notification"))
+			{
+				boolean status=false;
+				String rollno = request.getParameter("rollno");
+				String jobid = request.getParameter("jobid");
+				String msg = request.getParameter("message");
+				
+				CommonHelper commonHelper=new CommonHelper();
+				try {
+					status = commonHelper.sendNotification(rollno,jobid,msg);
+					if (status)
+					{
+						response.sendRedirect("tjsp/approveJobs.jsp?msg = notification send sucessful");
+					} else {
+						response.sendRedirect("tjsp/approveJobs.jsp?msg = notification send failed");
+					}	
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				
 			}
 		}

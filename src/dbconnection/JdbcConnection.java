@@ -11,7 +11,7 @@ public class JdbcConnection {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "#rushikesh11");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
 		}
 
 		catch (Exception e) {

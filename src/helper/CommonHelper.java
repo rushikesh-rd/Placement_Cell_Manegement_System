@@ -88,4 +88,17 @@ public class CommonHelper {
 		return statusBean;
 	}
 
+	public boolean sendNotification(String rollno,String jobid,String msg) throws SQLException
+	{
+		boolean status = false;
+		if (rollno != null && !"".equals(rollno) 
+				&& jobid != null && !"".equals(jobid) 
+				&& msg != null && !"".equals(msg)) 
+		{
+			CommonDao commonDao = new CommonDao();
+			status = commonDao.sendNotification(rollno,jobid,msg);
+		}
+		return status;
+	}
+
 }

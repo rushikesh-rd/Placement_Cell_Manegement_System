@@ -76,7 +76,7 @@
               try 
               {
             	Class.forName("com.mysql.cj.jdbc.Driver");
-                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root" , "#rushikesh11");
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root" , "root");
                 stmtt=con.prepareStatement( "select stinfo.pk_roll_no,stinfo.name,stinfo.email,stinfo.is_approved from student_info stinfo where stinfo.is_active='Y' and stinfo.is_approved='N'"
                 ); 
                 ResultSet rs=stmtt.executeQuery(); 

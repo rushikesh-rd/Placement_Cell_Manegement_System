@@ -47,7 +47,7 @@
               try 
               {
             	Class.forName("com.mysql.cj.jdbc.Driver");
-                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root" , "#rushikesh11");
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root" , "root");
                 stmtt=con.prepareStatement( "select stinfo.name,jobinfo.company_name,jobinfo.job_profile,jobinfo.job_skil,jobinfo.job_description,jobinfo.job_location,jobinfo.job_package,apjob.is_approved,apjob.pk_applied_jobs from applied_jobs apjob join student_info stinfo on apjob.fk_roll_no=stinfo.pk_roll_no join job_info jobinfo on jobinfo.pk_job_id=apjob.fk_job_id where apjob.is_active='Y' and stinfo.is_active='Y' and jobinfo.is_active='Y'"
                 ); 
                 ResultSet rs=stmtt.executeQuery(); 
@@ -64,6 +64,7 @@
                 <th>Job Package</th>
                 <th>Approved</th>
                 <th>Job Approve</th>
+                <th>Send Message</th>
               </tr>
                 <tr>
                   <td>

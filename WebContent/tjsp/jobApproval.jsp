@@ -18,7 +18,7 @@
 	boolean status=false;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "#rushikesh11");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
 			stmtt = con.prepareStatement(
 					"update applied_jobs set is_approved='Y' where pk_applied_jobs=?");
 			stmtt.setString(1, apjobid);
