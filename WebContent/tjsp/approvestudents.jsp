@@ -87,7 +87,7 @@
 					<th>Student Approved</th>
 					<th>Approve Student</th>
 				</tr> 
-				
+				<!-- changes -->
 				<%
                 while(rs.next()) 
                 { %>
