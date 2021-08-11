@@ -88,16 +88,39 @@ public class CommonHelper {
 		return statusBean;
 	}
 
-	public boolean sendNotification(String rollno,String jobid,String msg) throws SQLException
+	public boolean sendNotification(String rollno,String jobid,String msg,String name) throws SQLException
 	{
 		boolean status = false;
 		if (rollno != null && !"".equals(rollno) 
 				&& jobid != null && !"".equals(jobid) 
-				&& msg != null && !"".equals(msg)) 
+				&& msg != null && !"".equals(msg)
+				&& name!=null && !"".equals(name)) 
 		{
 			CommonDao commonDao = new CommonDao();
-			status = commonDao.sendNotification(rollno,jobid,msg);
+			status = commonDao.sendNotification(rollno,jobid,msg,name);
 		}
+		return status;
+	}
+
+	public boolean updateProfile(ArrayList list) throws SQLException
+	{
+		//StatusBean statusBean = new StatusBean();
+		boolean status = false;
+		if (list != null && !"".equals(list) && list.get(0) != null && !"".equals(list.get(0)) 
+				&& list.get(1) != null && !"".equals(list.get(1)) 
+				&& list.get(2) != null && !"".equals(list.get(2))
+				&& list.get(3) != null && !"".equals(list.get(3))
+				&& list.get(4) != null && !"".equals(list.get(4))
+				&& list.get(5) != null && !"".equals(list.get(5))
+				&& list.get(6) != null && !"".equals(list.get(6))
+				&& list.get(7) != null && !"".equals(list.get(7))
+				&& list.get(8) != null && !"".equals(list.get(8))) 
+			
+		{
+			CommonDao commonDao = new CommonDao();
+			status = commonDao.updateStudentProfile(list);
+		}
+		// TODO Auto-generated method stub
 		return status;
 	}
 

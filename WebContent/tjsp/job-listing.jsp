@@ -72,6 +72,23 @@
 
 
 	<%@include file="header.jsp" %>
+	<%
+				String status=request.getParameter("status");
+				if("Y".equals(status))
+				{
+					%><div class="alert alert-light" role="alert" align="center" style="color:green">
+						  You have sucessfully applied for this job
+					</div><%
+				}
+				else if("N".equals(status))
+				{
+					%>
+					<div class="alert alert-light" role="alert" align="center">
+					  You Have Already Applied For This Job
+					</div>
+					<%	
+				}
+			%>
 	<!-- <section> -->
 		<div class="container">
 			<div class="text-center">
@@ -80,17 +97,7 @@
 					
 				<p class="lead">Get best matched jobs directly here.</p>
 			</div>
-			<%
-				String status=request.getParameter("status");
-				if("Y".equals(status))
-				{
-					%><h1>You Have Successfully Applied For This Job</h1><%
-				}
-				else if("N".equals(status))
-				{
-					%><h1>You Have Already Applied For This Job</h1><%
-				}
-			%>
+			
 		</div>
 	<!-- </section> -->
 	<section>

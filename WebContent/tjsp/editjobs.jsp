@@ -8,6 +8,7 @@
 					<html lang="en">
 
 					<head>
+
 						<title>Approve Jobs</title>
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -78,68 +79,58 @@
 						</section>
 
 						<%@ include file="header.jsp" %>
-							<%String msg = request.getParameter("msg")!=null?request.getParameter("msg"):"";%>
-							<div><%=msg %></div>
-							<section>
-								<table id="customerss">
-									<tr>
-										<th>Roll_No</th>
-										<th>Name</th>
-										<th>Company Name</th>
-										<th>Job Profile</th>
-										<th>Job Skill</th>
-										<th>Job Description</th>
-										<th>Job Location</th>
-										<th>Job Package</th>
-										<th>Approved</th>
-										<th>Job Approve</th>
-										<th>Send Message</th>
-										
-									</tr>
-									<% Connection con=null; PreparedStatement stmtt=null; try {
-									   Class.forName("com.mysql.cj.jdbc.Driver");
-									   con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root" );
-									   stmtt=con.prepareStatement( "select stinfo.pk_roll_no,stinfo.name,jobinfo.company_name,jobinfo.job_profile,jobinfo.job_skil,jobinfo.job_description,jobinfo.job_location,jobinfo.job_package,apjob.is_approved,apjob.pk_applied_jobs from applied_jobs apjob join student_info stinfo on apjob.fk_roll_no=stinfo.pk_roll_no join job_info jobinfo on jobinfo.pk_job_id=apjob.fk_job_id where apjob.is_active='Y' and stinfo.is_active='Y' and jobinfo.is_active='Y'");
-									   ResultSet rs=stmtt.executeQuery(); while(rs.next()) { %>
-										<tr>
-											<td>
-												<%=rs.getString(1) %>
-											</td>
-											<td>
-												<%=rs.getString(2) %>
-											</td>
-											<td>
-												<%=rs.getString(3) %>
-											</td>
-											<td>
-												<%=rs.getString(4) %>
-											</td>
-											<td>
-												<%=rs.getString(5) %>
-											</td>
-											<td>
-												<%=rs.getString(6) %>
-											</td>
-											<td>
-												<%=rs.getString(7) %>
-											</td>
-											<td>
-												<%=rs.getString(8) %>
-											</td>
-											<td>
-												<%=rs.getString(9) %>
-											</td>
-												<td><a href="../tjsp/jobApproval.jsp?apjobid=<%=rs.getInt(10)%>" id="<%="approve_"+rs.getString(1) %>">Approve</a>
-											</td>
-												<td><a href="../tjsp/sendnotification.jsp?apjobid=<%=rs.getInt(10)%>&rollno=<%=rs.getString(1) %>&name=<%=rs.getString(2) %>" onclick="return validateMessage(<%=rs.getString(1) %>)">Send</a>
-											</td>
-											
-										</tr>
-										<% } } catch (Exception e) { e.printStackTrace(); }finally { con.close();
-											stmtt.close(); }%>
-								</table>
-							</section>
+							<%
+							String contextPath = request.getContextPath();
+							String message = request.getParameter("msg");
+							if(message==null)
+							{
+								message = "";
+							}
+							%>
+							
+							<h2><%=message %></h2>
+								<section>
+		<table id="customerss">
+			<tr>
+				<th>Company Name</th>
+				<th>Job Profile</th>
+				<th>Job Skill</th>
+				<th>Job Description</th>
+				<th>Job Location</th>
+				<th>Job Package</th>
+				<th>Delete</th>
+			</tr>
+		<% 
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
+			PreparedStatement stmtt = con.prepareStatement(
+					"select company_name,job_profile,job_skil,job_description,job_location,job_package,pk_job_id from job_info where is_active='Y'");
 
+			
+			ResultSet rs =stmtt.executeQuery();
+			
+			while(rs.next())
+			{
+				%>
+					<tr>
+						<td><%=rs.getString(1) %></td>
+						<td><%=rs.getString(2) %></td>
+						<td><%=rs.getString(3) %></td>
+						<td><%=rs.getString(4) %></td>
+						<td><%=rs.getString(5) %></td>
+						<td><%=rs.getString(6) %></td>
+						<td><a href="../tjsp/deleteJobs.jsp?jobid=<%=rs.getInt(7)%>">Delete</a></td>
+					</tr>
+				<%
+			}
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}%>
+		</table>
+	</section>
 							<main>
 								
 							</main>

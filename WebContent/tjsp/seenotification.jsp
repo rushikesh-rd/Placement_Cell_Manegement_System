@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,35 @@
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="../tcss/style.css">
-
+  <style>
+						    #customerss {
+						      font-family: Arial, Helvetica, sans-serif;
+						      border-collapse: collapse;
+						      width: 100%;
+						    }
+						
+						    #customerss td,
+						    #customerss th {
+						      border: 1px solid #ddd;
+						      padding: 8px;
+						    }
+						
+						    #customerss tr:nth-child(even) {
+						      background-color: #f2f2f2;
+						    }
+						
+						   /*  #customerss tr:hover {
+						      background-color: #ddd;
+						    } */
+						
+						    #customerss th {
+						      padding-top: 12px;
+						      padding-bottom: 12px;
+						      text-align: left;
+						      background-color: #04AA6D;
+						      color: white;
+						    }
+						  </style>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
@@ -38,7 +70,42 @@
 
 	<main>
 		<section>
-			
+			<table id="customerss">
+			<tr>
+				<th>Company Name</th>
+				<th>Job Profile</th>
+				<th>Job Location</th>
+				<th>Message</th>
+			</tr>
+			<%
+							Connection con = null;
+							PreparedStatement stmtt = null;
+							try {
+								Class.forName("com.mysql.cj.jdbc.Driver");
+								con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
+								stmtt = con.prepareStatement(
+								"SELECT ji.company_name,ji.job_profile,ji.job_location,na.notification FROM notification na join job_info ji on (ji.pk_job_id=na.job_id) where na.name=?");
+								stmtt.setString(1,name);
+								ResultSet rs = stmtt.executeQuery();
+								while (rs.next()) {
+							%>
+							<tr>
+								<td><%= rs.getString(1)%></td>
+								<td><%= rs.getString(2)%></td>
+								<td><%= rs.getString(3)%></td>
+								<td><%= rs.getString(4)%></td>
+							</tr>
+							<%
+							}
+							} catch (Exception e) {
+							e.printStackTrace();
+							} finally {
+							con.close();
+
+							stmtt.close();
+							}
+							%>
+				</table>
 		</section>
 	</main>
 

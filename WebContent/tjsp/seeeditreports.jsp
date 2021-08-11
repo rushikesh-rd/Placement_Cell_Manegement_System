@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet" %>
+<%@page import="java.sql.PreparedStatement" %>
+<%@page import="java.sql.DriverManager" %>
+<%@page import="java.sql.Connection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +24,35 @@
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="../tcss/style.css">
-
+			  <style>
+						    #customerss {
+						      font-family: Arial, Helvetica, sans-serif;
+						      border-collapse: collapse;
+						      width: 100%;
+						    }
+						
+						    #customerss td,
+						    #customerss th {
+						      border: 1px solid #ddd;
+						      padding: 8px;
+						    }
+						
+						    #customerss tr:nth-child(even) {
+						      background-color: #f2f2f2;
+						    }
+						
+						   /*  #customerss tr:hover {
+						      background-color: #ddd;
+						    } */
+						
+						    #customerss th {
+						      padding-top: 12px;
+						      padding-bottom: 12px;
+						      text-align: left;
+						      background-color: #04AA6D;
+						      color: white;
+						    }
+						  </style>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
@@ -34,32 +66,71 @@
 
 
 	<%@ include file="header.jsp" %>
+
 	
-
+	<%String msg = request.getParameter("msg")!=null?request.getParameter("msg"):"";
+%>
+<div><%=msg %></div>
+							<section>
+								<table id="customerss"  >
+									<tr>
+										<th>Roll_No</th>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Mobile</th>
+										<th>Hsc Mraks</th>
+										<th>Graduation</th>
+										<th>PG Marks</th>
+										<th>Date Of Birth</th>
+										<th>Gender</th>
+										
+	
+									</tr>
+									<% Connection con=null; PreparedStatement stmtt=null; try {
+									   Class.forName("com.mysql.cj.jdbc.Driver");
+									   con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root" );
+									   stmtt=con.prepareStatement( 	"select pk_roll_no,name,email,mobile_no,username,password,hsc_mark,grad_marks,pg_marks,dob,gender from student_info where is_active='Y' ");
+									   ResultSet rs=stmtt.executeQuery(); while(rs.next()) { %>
+										<tr>
+											<td>
+												<%=rs.getInt(1) %>
+											</td>
+											<td>
+												<%=rs.getString(2) %>
+											</td>
+											<td>
+												<%=rs.getString(3) %>
+											</td>
+											<td>
+												<%=rs.getInt(4) %>
+											</td>
+											<td>
+												<%=rs.getInt(7) %> %
+											</td>
+											<td>
+												<%=rs.getInt(8) %> %
+											</td>
+											<td>
+												<%=rs.getInt(9) %> %
+											</td>
+											<td>
+												<%=rs.getDate(10) %>
+											</td>
+											<td>
+												<%=rs.getString(11) %>
+											</td>
+										<%-- 	<td><a href="../tjsp/jobApproval.jsp?apjobid=<%=rs.getInt(10)%>" id="<%="approve_"+rs.getString(1) %>">Approve</a>
+											</td> --%>
+											
+										</tr>
+										<% } 
+									   } catch (Exception e) { e.printStackTrace(); }finally { con.close();
+											stmtt.close(); }%>
+								</table>
+							</section>
+	
 	<main>
-		<section>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="text-center">
-							<h2>About us</h2>
-
-							<br>
-
-							<p class="lead">Campus recruitment is a process through which
-								the corporate (employer) organization recruits the required
-								talent pool from the academic campuses. The selection process
-								takes place in the final year of a programme for students of
-								both undergraduate and post graduate courses. Over the years,
-								campus recruitment has assumed greater significance in the minds
-								of several stakeholders. The major stake hoIder”s recruitment
-								process is Institution, Companies, Students and Parents.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
+	
 
 
 	</main>

@@ -65,43 +65,6 @@
 		<img src="../imeges/sky.png" class="sky translate" data-speed="0.5"
 			alt="">
 	</header>
-
-	<section>
-		<div class="shadow"></div>
-
-		<div class="container">
-			<div class="content opacity">
-				<h3 class="title">
-					About
-					<div class="border"></div>
-				</h3>
-				<p class="text">Education in the society is surrounded by the
-					need for a job. Jobs fills the students’ dreams and enable them to
-					lead a life with fulfillment and accomplishment. Colleges, on the
-					other hand, plays an important role in the placement of the
-					candidate ín reputed companies all across the nation and worldwide.</p>
-			</div>
-
-			<div class="imgContainer opacity">
-				<img src="../imeges/image.jpg" alt="">
-			</div>
-		</div>
-	</section>
-
-	<script src="../js/index.js"></script>
-	<!-- Optional JavaScript; choose one of the two! -->
-
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-		crossorigin="anonymous"></script>
-
-	<!-- Option 2: Separate Popper and Bootstrap JS -->
-	<!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>

@@ -36,22 +36,26 @@ function validateField()
 	var rollno = document.getElementById("rollno").value;
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	if(name==null || name=="")
+	var phonenoregx = /^\d{10}$/;
+	var emailregx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	var numonly = /^\d+/;
+	var letters = /* /^[A-Za-z]+$/ *//^[a-zA-Z\s]*$/;
+	if(name==null || name=="" || !name.match(letters))
 	{
 		alert("Plz Enter Name");
 		return false;
 	}
-	else if(email==null || email=="")
+	else if(email==null || email=="" || !email.match(emailregx))
 	{
 		alert("Plz Enter Email");
 		return false;
 	}
-	else if(phone==null || phone=="")
+	else if(phone==null || phone=="" || !phone.match(phonenoregx))
 	{
 		alert("Plz Enter Phone No");
 		return false;
 	}
-	else if(rollno==null || rollno=="")
+	else if(rollno==null || rollno=="" || !rollno.match(numonly))
 	{
 		alert("Plz Enter Roll No");
 		return false;

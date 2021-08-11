@@ -39,6 +39,42 @@
 			alert('Nice, you triggered this alert message!', 'success')
 		})
 	}
+	
+	function validatefield()
+	{
+		var company = document.getElementById("company").value;
+		var profile = document.getElementById("profile").value;
+		var skill = document.getElementById("skill").value;
+		var location = document.getElementById("location").value;
+		var desc = document.getElementById("desc").value;
+		var letters = /^[a-zA-Z\s]*$/;
+		
+		if(company==null || company=="" || !company.match(letters))
+		{
+			alert("Enter Valid Company Name");
+			return false;
+		}
+		else if(profile==null || profile=="" || !profile.match(letters))
+		{
+			alert("Enter Valid Profile");
+			return false;
+		}
+		else if(skill==null || skill=="")
+		{
+			alert("Enter Valid skill");
+			return false;
+		}
+		else if(location==null && location=="")
+		{
+			alert("Enter Valid location");
+			return false;
+		}
+		else if(desc==null && desc=="")
+		{
+			alert("Enter Valid desc");
+			return false;
+		}
+	}
 </script>
 
 </head>
@@ -53,56 +89,43 @@ if(message==null)
 	<!-- PRE LOADER -->
 	<section class="preloader">
 		<div class="spinner">
-
 			<span class="spinner-rotate"></span>
-
 		</div>
 	</section>
 
 
 	<%@ include file="header.jsp" %>
-	
 				<div class="alert alert-light" role="alert" align="center">
- 					<%=message %>
+ 					<%=message%>
 				</div>
-	
-	
-
+	<div class="container">
+					<div class="text-center">
+						<h1>Add Jobs</h1>
+					</div>
+				</div>
 	<!-- Job Post -->
-	<section id="contact">
+	<section id="contact">	
 		<div class="container">
 			<div class="row">
 				
 				<!-- Add job -->
-
-				<div class="container">
-					<div class="text-center">
-						<h1>Add Jobs</h1>
-						<br>
-					</div>
-				</div>
-
 				<div class="col-md-6 col-sm-12" align="center">
 					<form id="contact-form" role="form" action="../ServletControler" method="post">
 						<div class="col-md-12 col-sm-12" align="center">
-							<input type="text" align="center" class="form-control" placeholder="Company Name" name="companyname" required>
-							<input type="text" class="form-control"  placeholder="Job Profile" name="jobprofile" required> 
-							<input type="text" class="form-control" placeholder="Job Skils" name="jobskils" required>
-							<input type="text" class="form-control" placeholder="Job Location" name="joblocation" required>
-							<input type="text" class="form-control" placeholder="Job Package" name="jobpackage" required>
-							<textarea class="form-control" rows="6" placeholder="Job Description" name="jobdescription" required></textarea>
+							<input type="text" id="company" align="center" class="form-control" placeholder="Company Name" name="companyname" required>
+							<input type="text" id="profile" class="form-control"  placeholder="Job Profile" name="jobprofile" required> 
+							<input type="text" id="skill" class="form-control" placeholder="Job Skils" name="jobskils" required>
+							<input type="text" id="location" class="form-control" placeholder="Job Location" name="joblocation" required>
+							<input type="text" id="package" class="form-control" placeholder="Job Package" name="jobpackage" required>
+							<textarea id="desc" class="form-control" rows="6" placeholder="Job Description" name="jobdescription" required></textarea>
 						</div>
-
 						<div class="col-md-4 col-sm-12">
 							<input type="submit" class="form-control" name="Submit"
 								value="Submit">
 							<input type="hidden" name="action" value="jobpost">
 						</div> 
-						
-
 					</form>
 				</div>
-
 			</div>
 		</div>
 	</section>
@@ -113,7 +136,7 @@ if(message==null)
 
 
 	<!-- FOOTER -->
-	<footer id="footer">
+	<!-- <footer id="footer">
 		<div class="container">
 			<div class="row">
 
@@ -190,7 +213,7 @@ if(message==null)
 		</div>
 	</footer>
 
-
+ -->
 
 	<!-- SCRIPTS -->
 	

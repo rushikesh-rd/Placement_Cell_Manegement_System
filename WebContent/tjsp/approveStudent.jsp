@@ -40,7 +40,7 @@
 	
 	if(status)
 	{
-		response.sendRedirect("approvestudents.jsp");
+		response.sendRedirect("approvestudents.jsp?msg=Student Approve Sucessfullyy!!!");
 	}
 }%>
 

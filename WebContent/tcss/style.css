@@ -699,8 +699,16 @@ https://templatemo.com/tm-516-known
       CONTACT             
   -----------------------------------------*/
 
-  #contact {
-    background: #3f51b5;
+  #contactt {
+    background: #999;
+  }
+  
+  #contactt {
+    background: #999;
+  }
+  
+  #contactAddJob {
+  	background: #C2F784
   }
 
   #contact h2 {

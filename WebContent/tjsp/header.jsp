@@ -71,11 +71,11 @@ if(name ==null || "".equals(name)){name="";}
 
 						<ul class="dropdown-menu">
 							<li><a href="../tjsp/addjobs.jsp">Add Jobs</a></li>
+							<li><a href="../tjsp/editjobs.jsp">Listed Jobs on Portal</a></li>
 							<li><a href="../tjsp/approvestudents.jsp">Approve Students</a></li>
 							<li><a href="../tjsp/seeeditreports.jsp">See Edit Reports</a></li>
-							<li><a href="../tjsp/sendnotification.jsp">Send Notification</a></li>
+							<!-- <li><a href="../tjsp/sendnotification.jsp">Send Notification</a></li> -->
 							<li><a href="../tjsp/approveJobs.jsp">Approve Jobs</a></li>
-							
 						</ul>
 					</li>
 					<% }else if(admin==null || "".equals(admin)){%>

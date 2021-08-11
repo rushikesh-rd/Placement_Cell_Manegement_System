@@ -12,6 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.graalvm.compiler.core.GraalCompiler.Request;
+
 import beans.RegistraionBean;
 import beans.StatusBean;
 import beans.UserHelp;
@@ -19,6 +23,7 @@ import dbconnection.JdbcConnection;
 
 
 public class CommonDao {
+	
 	JdbcConnection jdbcObj = new JdbcConnection();
 	
 	String pattern = "dd/MM/yyyy HH:mm:ss";
@@ -230,18 +235,18 @@ public class CommonDao {
 		return status;
 	}
 
-	public Boolean sendNotification(String rollno,String jobid,String msg) throws SQLException {
+	public Boolean sendNotification(String rollno,String jobid,String msg,String name) throws SQLException {
 		//S TODO Auto-generated method stub
-		
 		Connection con = jdbcObj.getConnection();
 		StatusBean bean=new StatusBean();
 		Boolean status=false;
 		PreparedStatement stmtt = null;
 		try {
-			stmtt = con.prepareStatement("insert into notification(notification,roll_no,job_id,is_active) values(?,?,?,'Y')");
+			stmtt = con.prepareStatement("insert into notification(notification,roll_no,job_id,is_active,name) values(?,?,?,'Y',?)");
 			stmtt.setString(1, msg);
 			stmtt.setLong(2, Long.valueOf(rollno));
 			stmtt.setLong(3, Long.valueOf(jobid));
+			stmtt.setString(4, name);
 			int rs =stmtt.executeUpdate();
 			if(rs>0)
 			{
@@ -260,4 +265,43 @@ public class CommonDao {
 
 	}
 
+	public boolean updateStudentProfile(ArrayList list) throws SQLException
+	{Connection con = jdbcObj.getConnection();
+	//StatusBean bean=new StatusBean();
+	boolean status = false;
+	PreparedStatement stmtt = null;
+	
+	int pk_roll_no=Integer.parseInt((String) list.get(0));
+
+	
+	try {
+		stmtt = con.prepareStatement("update student_info set name=?,email=?,mobile_no=?,hsc_mark=?,grad_marks=?,pg_marks=?,gender=?,dob=? where is_active='Y' and pk_roll_no='"+pk_roll_no+"' ");
+		stmtt.setString(1, (String) list.get(1));
+		stmtt.setString(2, (String) list.get(2));
+		stmtt.setString(3, (String) list.get(3));
+		stmtt.setInt(4, Integer.parseInt((String)list.get(4)));
+		stmtt.setInt(5, Integer.parseInt((String)list.get(5)));
+		stmtt.setInt(6, Integer.parseInt((String)list.get(6)));
+		stmtt.setString(7, (String) list.get(7));
+		stmtt.setString(8, (String) list.get(8));
+		
+		int i=stmtt.executeUpdate();
+		
+		if(i>0)
+		{
+			status = true;
+		}
+	}
+
+	catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		con.close();
+		stmtt.close();
+	}
+	return status;
+		// TODO Auto-generated method stub
+	}
+
+	
 }

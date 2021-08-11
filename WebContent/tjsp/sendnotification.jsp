@@ -35,15 +35,17 @@
 
 	<%@ include file="header.jsp" %>
 <%String rollNo=request.getParameter("rollno");
-String jobid=request.getParameter("apjobid");%>
+String jobid=request.getParameter("apjobid");
+String name1 = request.getParameter("name");%>
 	
 
 	<main>
 		<section>
 			<form action="../ServletControler" method="post">
-		Roll No. <input type="text" id="rollno" name="rollno" value="<%=rollNo %>" readonly><br><br>
-		Job Id <input type="text" id="jobid" name="jobid" value="<%=jobid %>" readonly><br><br>
-				<textarea cols="50" rows="10" id="message" name="message"></textarea><br><br>
+			    Name <input type="text" id="name" name="name" value="<%=name1 %>" readonly><br><br>
+				Roll No. <input type="text" id="rollno" name="rollno" value="<%=rollNo %>" readonly><br><br>
+				Job Id <input type="text" id="jobid" name="jobid" value="<%=jobid %>" readonly><br><br>
+						<textarea cols="50" rows="10" id="message" name="message"></textarea><br><br>
 				<input type="submit" name="submit">
 				<input type="reset" name="reset">
 				<input type="hidden" name="action" value="notification">

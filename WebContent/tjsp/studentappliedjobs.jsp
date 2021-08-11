@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet" %>
+  <%@page import="java.sql.PreparedStatement" %>
+    <%@page import="java.sql.DriverManager" %>
+      <%@page import="java.sql.Connection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +24,36 @@
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="../tcss/style.css">
+<style>
+              #customers {
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+              }
 
+              #customers td,
+              #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+              }
+
+              #customers tr:nth-child(even) {
+              
+                background-color: #f2f2f2;
+              }
+
+              #customers tr:hover {
+                background-color: #ddd;
+              }
+
+              #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+              }
+            </style>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
@@ -37,29 +70,77 @@
 	
 
 	<main>
-		<section>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="text-center">
-							<h2>About us</h2>
 
-							<br>
+<section>
 
-							<p class="lead">Campus recruitment is a process through which
-								the corporate (employer) organization recruits the required
-								talent pool from the academic campuses. The selection process
-								takes place in the final year of a programme for students of
-								both undergraduate and post graduate courses. Over the years,
-								campus recruitment has assumed greater significance in the minds
-								of several stakeholders. The major stake hoIder”s recruitment
-								process is Institution, Companies, Students and Parents.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+ <table id="customers">
+              <tr>
+                
+                <th>Company Name</th>
+                <th>Job Profile</th>
+                <th>Job Skill</th>
+                <th>Job Description</th>
+                <th>Job Location</th>
+                <th>Job Package</th>
+                <th>Job Approve</th>
+               
+              </tr>
+           
+  <% Connection con=null; 
+              PreparedStatement stmtt=null;
+              try 
+              {
+            	Class.forName("com.mysql.cj.jdbc.Driver");
+                con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root" , "root");
+                stmtt=con.prepareStatement( "select jobinfo.company_name,jobinfo.job_profile,jobinfo.job_skil,jobinfo.job_description,jobinfo.job_location,jobinfo.job_package,apjob.is_approved from applied_jobs apjob join student_info stinfo on (apjob.fk_roll_no=stinfo.pk_roll_no) join job_info jobinfo on (jobinfo.pk_job_id=apjob.fk_job_id) where apjob.is_active='Y' and stinfo.is_active='Y' and jobinfo.is_active='Y'  and stinfo.name=?"); 
+                stmtt.setString(1, name);
+                
+                ResultSet rs=stmtt.executeQuery(); 
+                while(rs.next()) 
+                { %>
+             
+                <tr>
+                  <td>
+                    <%=rs.getString(1) %>
+                  </td>
+                  <td>
+                    <%=rs.getString(2) %>
+                  </td>
+                  <td>
+                    <%=rs.getString(3) %>
+                  </td>
+                  <td>
+                    <%=rs.getString(4) %>
+                  </td>
+                  <td>
+                    <%=rs.getString(5) %>
+                  </td>
+                  <td>
+                    <%=rs.getString(6) %>
+                  </td>
+                  <td>
+                    <%=rs.getString(7) %>
+                  </td>
+                
+                  
+                </tr>
+                <% 
+                }
+                } 
+              catch (Exception e) 
+              { 
+            	  e.printStackTrace(); 
+              }
+              finally 
+              { 
+            	  con.close(); stmtt.close(); 
+              }%>
 
+            </table>
+
+
+
+</section>
 
 
 	</main>

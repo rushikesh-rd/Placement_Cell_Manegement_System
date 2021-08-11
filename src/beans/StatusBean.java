@@ -6,6 +6,13 @@ public class StatusBean {
 	private boolean status;
 	private String isadmin;
 	private String isApproved;
+	private Long rollno;
+	public Long getRollno() {
+		return rollno;
+	}
+	public void setRollno(Long rollno) {
+		this.rollno = rollno;
+	}
 	public String getIsApproved() {
 		return isApproved;
 	}

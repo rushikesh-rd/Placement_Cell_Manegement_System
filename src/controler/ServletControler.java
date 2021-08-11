@@ -137,7 +137,8 @@ public class ServletControler extends HttpServlet {
 				StatusBean statusBean = null;
 				try {
 					statusBean = commonHelper.jobPost(list);
-					if (statusBean.isStatus()) {
+					if (statusBean.isStatus())
+					{
 						response.sendRedirect("tjsp/addjobs.jsp?message=Job Added to the portal");
 					} else {
 						response.sendRedirect("tjsp/addjobs.jsp?message=Job Adding faild ");
@@ -152,20 +153,58 @@ public class ServletControler extends HttpServlet {
 			else if(action.equals("notification"))
 			{
 				boolean status=false;
+				
 				String rollno = request.getParameter("rollno");
 				String jobid = request.getParameter("jobid");
 				String msg = request.getParameter("message");
+				String name = request.getParameter("name");
+				
+				CommonHelper commonHelper=new CommonHelper();
+				StatusBean bean=null;
+				try {
+					status = commonHelper.sendNotification(rollno,jobid,msg,name);
+					if (status)
+					{
+						response.sendRedirect("tjsp/approveJobs.jsp?msg=notification send sucessfully");
+					} else {
+						response.sendRedirect("tjsp/approveJobs.jsp?msg =failed");
+					}	
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+			
+			else if(action.equals("uprofile"))
+			{
+				boolean status=false;
+				ArrayList list=new ArrayList();
+				list.add(request.getParameter("rollno"));
+				list.add(request.getParameter("name"));
+				list.add(request.getParameter("email"));
+				list.add(request.getParameter("contactno"));
+				list.add(request.getParameter("hscmarks"));
+				list.add(request.getParameter("gradmarks"));
+				list.add(request.getParameter("pgmarks"));
+				list.add(request.getParameter("gender"));
+				list.add(request.getParameter("dob"));
+				
+				
 				
 				CommonHelper commonHelper=new CommonHelper();
 				try {
-					status = commonHelper.sendNotification(rollno,jobid,msg);
+					status = commonHelper.updateProfile(list);
+					
 					if (status)
 					{
-						response.sendRedirect("tjsp/approveJobs.jsp?msg = notification send sucessful");
+						response.sendRedirect("tjsp/editstudentprofile.jsp?msg=Data Upadated Sucessfully");
 					} else {
-						response.sendRedirect("tjsp/approveJobs.jsp?msg = notification send failed");
+						response.sendRedirect("tjsp/editstudentprofile.jsp?msg=Failed ");
 					}	
-				} catch (Exception e) {
+				} 
+			catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
