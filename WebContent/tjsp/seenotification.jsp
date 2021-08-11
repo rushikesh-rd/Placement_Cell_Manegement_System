@@ -88,17 +88,17 @@
 								stmtt.setString(1,name);
 								ResultSet rs = stmtt.executeQuery();
 								while (rs.next()) {
-							%>
-							<tr>
-								<td><%= rs.getString(1)%></td>
-								<td><%= rs.getString(2)%></td>
-								<td><%= rs.getString(3)%></td>
-								<td><%= rs.getString(4)%></td>
-							</tr>
-							<%
+								%>
+								<tr>
+									<td><%= rs.getString(1)%></td>
+									<td><%= rs.getString(2)%></td>
+									<td><%= rs.getString(3)%></td>
+									<td><%= rs.getString(4)%></td>
+								</tr>
+								<%
 							}
 							} catch (Exception e) {
-							e.printStackTrace();
+								e.printStackTrace();
 							} finally {
 							con.close();
 

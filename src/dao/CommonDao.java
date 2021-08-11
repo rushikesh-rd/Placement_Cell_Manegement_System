@@ -14,7 +14,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.graalvm.compiler.core.GraalCompiler.Request;
+
 
 import beans.RegistraionBean;
 import beans.StatusBean;
@@ -275,7 +275,7 @@ public class CommonDao {
 
 	
 	try {
-		stmtt = con.prepareStatement("update student_info set name=?,email=?,mobile_no=?,hsc_mark=?,grad_marks=?,pg_marks=?,gender=?,dob=? where is_active='Y' and pk_roll_no='"+pk_roll_no+"' ");
+		stmtt = con.prepareStatement("update student_info set name=?,email=?,mobile_no=?,hsc_marks=?,grad_marks=?,pg_marks=?,gender=?,dob=? where is_active='Y' and pk_roll_no='"+pk_roll_no+"' ");
 		stmtt.setString(1, (String) list.get(1));
 		stmtt.setString(2, (String) list.get(2));
 		stmtt.setString(3, (String) list.get(3));

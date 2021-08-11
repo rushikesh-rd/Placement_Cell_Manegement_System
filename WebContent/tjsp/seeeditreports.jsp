@@ -89,7 +89,7 @@
 									<% Connection con=null; PreparedStatement stmtt=null; try {
 									   Class.forName("com.mysql.cj.jdbc.Driver");
 									   con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root" );
-									   stmtt=con.prepareStatement( 	"select pk_roll_no,name,email,mobile_no,username,password,hsc_mark,grad_marks,pg_marks,dob,gender from student_info where is_active='Y' ");
+									   stmtt=con.prepareStatement( 	"select pk_roll_no,name,email,mobile_no,username,password,hsc_marks,grad_marks,pg_marks,dob,gender from student_info where is_active='Y' ");
 									   ResultSet rs=stmtt.executeQuery(); while(rs.next()) { %>
 										<tr>
 											<td>
@@ -102,7 +102,7 @@
 												<%=rs.getString(3) %>
 											</td>
 											<td>
-												<%=rs.getInt(4) %>
+												<%=rs.getString(4) %>
 											</td>
 											<td>
 												<%=rs.getInt(7) %> %

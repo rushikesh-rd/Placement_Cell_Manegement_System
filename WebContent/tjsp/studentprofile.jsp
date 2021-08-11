@@ -40,7 +40,7 @@
 								Class.forName("com.mysql.cj.jdbc.Driver");
 								con = DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root");
 								stmtt = con.prepareStatement(
-								"select pk_roll_no,name,email,mobile_no,gender,dob,hsc_mark,grad_marks,pg_marks from student_info where name=? and is_active='Y'");
+								"select pk_roll_no,name,email,mobile_no,gender,dob,hsc_marks,grad_marks,pg_marks from student_info where name=? and is_active='Y'");
 								stmtt.setString(1,name);
 								ResultSet rs = stmtt.executeQuery();
 								while (rs.next()) {
