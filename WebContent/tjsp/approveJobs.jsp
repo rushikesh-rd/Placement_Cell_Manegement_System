@@ -99,7 +99,7 @@
 									<% Connection con=null; PreparedStatement stmtt=null; try {
 									   Class.forName("com.mysql.cj.jdbc.Driver");
 									   con=DriverManager.getConnection("jdbc:mysql://localhost:3306/placement_cell_db", "root", "root" );
-									   stmtt=con.prepareStatement( "select stinfo.pk_roll_no,stinfo.name,jobinfo.company_name,jobinfo.job_profile,jobinfo.job_skil,jobinfo.job_description,jobinfo.job_location,jobinfo.job_package,apjob.is_approved,apjob.pk_applied_jobs from applied_jobs apjob join student_info stinfo on apjob.fk_roll_no=stinfo.pk_roll_no join job_info jobinfo on jobinfo.pk_job_id=apjob.fk_job_id where apjob.is_active='Y' and stinfo.is_active='Y' and jobinfo.is_active='Y'");
+									   stmtt=con.prepareStatement( "select stinfo.pk_roll_no,stinfo.name,jobinfo.company_name,jobinfo.job_profile,jobinfo.job_skil,jobinfo.job_description,jobinfo.job_location,jobinfo.job_package,apjob.is_approved,apjob.pk_applied_jobs,apjob.fk_job_id from applied_jobs apjob join student_info stinfo on apjob.fk_roll_no=stinfo.pk_roll_no join job_info jobinfo on jobinfo.pk_job_id=apjob.fk_job_id where apjob.is_active='Y' and stinfo.is_active='Y' and jobinfo.is_active='Y'");
 									   ResultSet rs=stmtt.executeQuery(); while(rs.next()) { %>
 										<tr>
 											<td>
@@ -131,7 +131,7 @@
 											</td>
 												<td><a href="../tjsp/jobApproval.jsp?apjobid=<%=rs.getInt(10)%>" id="<%="approve_"+rs.getString(1) %>">Approve</a>
 											</td>
-												<td><a href="../tjsp/sendnotification.jsp?apjobid=<%=rs.getInt(10)%>&rollno=<%=rs.getString(1) %>&name=<%=rs.getString(2) %>" onclick="return validateMessage(<%=rs.getString(1) %>)">Send</a>
+												<td><a href="../tjsp/sendnotification.jsp?apjobid=<%=rs.getInt(11)%>&rollno=<%=rs.getString(1) %>&name=<%=rs.getString(2) %>" onclick="return validateMessage(<%=rs.getString(1) %>)">Send</a>
 											</td>
 											
 										</tr>
@@ -146,7 +146,7 @@
 
 
 
-							<!-- FOOTER -->
+	<!-- FOOTER -->
 							<footer id="footer">
 								<div class="container">
 									<div class="row">

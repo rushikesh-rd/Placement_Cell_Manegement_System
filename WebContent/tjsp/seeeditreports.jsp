@@ -114,7 +114,7 @@
 												<%=rs.getInt(9) %> %
 											</td>
 											<td>
-												<%=rs.getDate(10) %>
+												<%=rs.getString(10) %>
 											</td>
 											<td>
 												<%=rs.getString(11) %>
