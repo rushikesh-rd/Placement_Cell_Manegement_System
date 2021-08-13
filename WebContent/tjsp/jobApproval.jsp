@@ -40,7 +40,7 @@
 	
 	if(status)
 	{
-		response.sendRedirect("approveJobs.jsp");
+		response.sendRedirect("approveJobs.jsp?message=Job Approved");
 	}
 }%>
 

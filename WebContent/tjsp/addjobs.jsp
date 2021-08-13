@@ -98,8 +98,9 @@ if(message==null)
 				<div class="alert alert-light" role="alert" align="center">
  					<%=message%>
 				</div>
+				
 	<div class="container">
-					<div class="text-center">
+				<div class="text-center">
 						<h1>Add Jobs</h1>
 					</div>
 				</div>

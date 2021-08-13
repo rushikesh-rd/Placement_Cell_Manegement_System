@@ -77,7 +77,7 @@
 				if("Y".equals(status))
 				{
 					%><div class="alert alert-light" role="alert" align="center" style="color:green">
-						  You have sucessfully applied for this job
+						  <h3>You have sucessfully applied for this job</h3>
 					</div><%
 				}
 				else if("N".equals(status))
@@ -88,7 +88,7 @@
 					</div>
 					<%	
 				}
-			%>
+	%>
 	<!-- <section> -->
 		<div class="container">
 			<div class="text-center">

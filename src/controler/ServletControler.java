@@ -76,6 +76,7 @@ public class ServletControler extends HttpServlet {
 					e.printStackTrace();
 				}
 			} 
+			
 			else if (action.equals("login")) {
 				StatusBean bean = null;
 				List list = new ArrayList();
@@ -98,6 +99,8 @@ public class ServletControler extends HttpServlet {
 					e.printStackTrace();
 				}
 			} 
+			
+			
 			else if (action.equals("contactus")) 
 			{
 				StatusBean bean = null;
@@ -165,7 +168,7 @@ public class ServletControler extends HttpServlet {
 					status = commonHelper.sendNotification(rollno,jobid,msg,name);
 					if (status)
 					{
-						response.sendRedirect("tjsp/approveJobs.jsp?msg=notification send sucessfully");
+						response.sendRedirect("tjsp/approveJobs.jsp?msg=Notification send sucessfully");
 					} else {
 						response.sendRedirect("tjsp/approveJobs.jsp?msg =failed");
 					}	

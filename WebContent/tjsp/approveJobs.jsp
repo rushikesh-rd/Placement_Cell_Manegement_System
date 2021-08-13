@@ -67,6 +67,7 @@
 						  </style>
 
 					</head>
+					
 
 					<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
@@ -78,8 +79,17 @@
 						</section>
 
 						<%@ include file="header.jsp" %>
-							<%String msg = request.getParameter("msg")!=null?request.getParameter("msg"):"";%>
-							<div><%=msg %></div>
+							<%String msg = request.getParameter("message")!=null?request.getParameter("message"):"";%>
+							<%String notification = request.getParameter("msg")!=null?request.getParameter("msg"):"";%>
+							<!-- alert  -->
+							<div class="alert alert-light" role="alert" align="center" style="color:green">
+						 		 <h3><%=msg %></h3>
+							</div>
+							<div class="alert alert-light" role="alert" align="center" style="color:green">
+						 		 <h3><%=notification %></h3>
+							</div>
+							
+							
 							<section>
 								<table id="customerss">
 									<tr>

@@ -103,7 +103,10 @@
 			message = "";
 		}
 		%>
-	<h1><%=message %></h1>
+
+	<div class="alert alert-light" role="alert" align="center" style="color:green">
+		<h3><%=message %></h3>
+	</div>
 	
 	
 <%

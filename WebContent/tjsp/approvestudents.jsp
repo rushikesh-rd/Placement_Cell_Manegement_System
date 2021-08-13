@@ -75,7 +75,11 @@
 							}
 							%>
 							
-							<h2><%=message %></h2>
+							
+							<div class="alert alert-light" role="alert" align="center">
+ 									<%=message%>
+							</div>
+				
 <section>
 
 	<% %>
